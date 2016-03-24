@@ -16,10 +16,11 @@
   },
   "files": [
     "lib",
-    "assets/*.css"
+    "assets/*.css",
+    "index.js"
   ],
   "licenses": "MIT",
-  "main": "./lib/index",
+  "main": "index.js",
   "config": {
     "port": 8001
   },
