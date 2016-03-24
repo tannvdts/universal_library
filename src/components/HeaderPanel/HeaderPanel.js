@@ -13,10 +13,10 @@ export default class HeaderPanel extends Component {
   //};
 
   render() {
-    const styles = require('./HeaderPanel.scss');
+    //const styles = require('./HeaderPanel.scss'); className={styles.headerPanel}
     const {headerItems, headerLogo} = this.props;
     return (
-      <div className={styles.headerPanel}>
+      <div >
         <Navbar >
           <Navbar.Header>
             {<NavbarBrand>
