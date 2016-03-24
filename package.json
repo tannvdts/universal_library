@@ -16,7 +16,8 @@
   },
   "files": [
     "lib",
-    "assets/*.css"
+    "assets/*.css",
+    "src"
   ],
   "licenses": "MIT",
   "main": "./lib/index",
