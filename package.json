@@ -20,7 +20,7 @@
     "src"
   ],
   "licenses": "MIT",
-  "main": "./lib/index",
+  "main": "./src/index",
   "config": {
     "port": 8001
   },
