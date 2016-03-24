@@ -40,14 +40,17 @@
   "devDependencies": {
     "expect.js": "~0.3.1",
     "jquery": "~1.11.3",
+    "node-sass": "^3.4.2",
     "precommit-hook": "1.x",
+    "rc-dialog": "~5.2.1",
     "rc-server": "3.x",
     "rc-tools": "4.x",
-    "rc-dialog":"~5.2.1",
     "react": "~0.14.0",
     "react-addons-test-utils": "~0.14.0",
     "react-dom": "~0.14.0",
-    "react-router": "~1.0.0-rc1"
+    "react-router": "~1.0.0-rc1",
+    "sass-loader": "^3.2.0",
+    "webpack": "^1.12.14"
   },
   "precommit": [
     "lint"
