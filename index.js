@@ -2,4 +2,4 @@
 import QueueAnim from './src/';
 import HeaderPanel1 from './src/';
 export default HeaderPanel1;
-export default QueueAnim;
+//export default QueueAnim;
