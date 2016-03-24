@@ -6,11 +6,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavbarBrand, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default class HeaderPanel extends Component {
-  static propTypes = {
-    user: PropTypes.object,
-    headerLogo: PropTypes.object,
-    headerItems: PropTypes.array.isRequired
-  };
+  //static propTypes = {
+  //  user: PropTypes.object,
+  //  headerLogo: PropTypes.object,
+  //  headerItems: PropTypes.array.isRequired
+  //};
 
   render() {
     const styles = require('./HeaderPanel.scss');
@@ -104,3 +104,9 @@ export default class HeaderPanel extends Component {
     );
   }
 }
+
+HeaderPanel.propTypes = {
+  user: PropTypes.object,
+  headerLogo: PropTypes.object,
+  headerItems: PropTypes.array.isRequired
+};
