@@ -14,6 +14,8 @@ export default class HeaderPanel extends Component {
 
   render() {
     //const styles = require('./HeaderPanel.scss'); className={styles.headerPanel}
+    const style= require("!raw!sass!./HeaderPanel.scss");
+    console.log(style);
     const {headerItems, headerLogo} = this.props;
     return (
       <div >
