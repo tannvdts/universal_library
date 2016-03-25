@@ -6,14 +6,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavbarBrand, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default class HeaderPanel extends Component {
-  //static propTypes = {
+  // static propTypes = {
   //  user: PropTypes.object,
   //  headerLogo: PropTypes.object,
   //  headerItems: PropTypes.array.isRequired
-  //};
-
+  // };
   render() {
-    //const styles = require('./HeaderPanel.less'); className={styles.headerPanel}i //test test test
+    // const styles = require('./HeaderPanel.less'); className={styles.headerPanel}i //test test test
     const {headerItems, headerLogo} = this.props;
     return (
       <div >
@@ -92,19 +91,13 @@ export default class HeaderPanel extends Component {
                   }
                 }
               })}
-
-
             </Nav>
-
-
           </Navbar.Collapse>
-
         </Navbar>
       </div>
     );
   }
 }
-
 HeaderPanel.propTypes = {
   user: PropTypes.object,
   headerLogo: PropTypes.object,

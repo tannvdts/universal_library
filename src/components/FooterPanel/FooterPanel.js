@@ -2,11 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class FooterPanel extends Component {
-
-
-
   render() {
-    //const styles = require('./FooterPanel.scss');
+    // const styles = require('./FooterPanel.scss');
     const {footerItems} = this.props;
     const {nav, ver} = footerItems;
     return (
@@ -59,8 +56,6 @@ export default class FooterPanel extends Component {
     );
   }
 }
-
-
 FooterPanel.propTypes = {
   footerItems: PropTypes.object.isRequired
 };
