@@ -19,5 +19,4 @@ Thumbs.db
 *.pyo
 node_modules
 .cache
-*.css
 build
