@@ -6,11 +6,11 @@ export default class FooterPanel extends Component {
 
 
   render() {
-    const styles = require('./FooterPanel.scss');
+    //const styles = require('./FooterPanel.scss');
     const {footerItems} = this.props;
     const {nav, ver} = footerItems;
     return (
-      <footer className={styles.ct_footer}>
+      <footer className="ct_footer">
         <div className="container">
           <p>
 
@@ -33,7 +33,7 @@ export default class FooterPanel extends Component {
               }
             })}
             <br/>
-            <span className= {styles.span_bold}>Xem chotot.vn phiên bản: </span>
+            <span className= "span_bold">Xem chotot.vn phiên bản: </span>
             <br/>
             {ver.map((link, index) => {
               switch (link.type) {
