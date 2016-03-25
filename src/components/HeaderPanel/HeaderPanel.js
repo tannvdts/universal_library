@@ -13,7 +13,7 @@ export default class HeaderPanel extends Component {
   // };
   render() {
     const styles = require('../../../assets/HeaderPanel.scss');
-    require("../../../assets/ct_header_main_style.css");
+    //require("../../../assets/ct_header_main_style.css");
     const {headerItems, headerLogo} = this.props;
     return (
       <div className= {styles.headerPanel}>
