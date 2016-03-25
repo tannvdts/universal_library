@@ -3,7 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 export default class FooterPanel extends Component {
   render() {
-     const styles = require('../../../FooterPanel.scss');
+     const styles = require('../../../assets/FooterPanel.scss');
     //require("../../../assets/FooterPanel.css");
     const {footerItems} = this.props;
     const {nav, ver} = footerItems;
