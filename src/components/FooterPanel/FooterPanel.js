@@ -3,11 +3,12 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 export default class FooterPanel extends Component {
   render() {
-    // const styles = require('./FooterPanel.scss');
+     const styles = require('../../../FooterPanel.scss');
+    //require("../../../assets/FooterPanel.css");
     const {footerItems} = this.props;
     const {nav, ver} = footerItems;
     return (
-      <footer className="ct_footer">
+      <footer className={styles.ct_footer}>
         <div className="container">
           <p>
 
@@ -30,7 +31,7 @@ export default class FooterPanel extends Component {
               }
             })}
             <br/>
-            <span className= "span_bold">Xem chotot.vn phiên bản: </span>
+            <span className= {styles.span_bold}>Xem chotot.vn phiên bản: </span>
             <br/>
             {ver.map((link, index) => {
               switch (link.type) {
