@@ -13,8 +13,10 @@ export default class HeaderPanel extends Component {
   // };
   render() {
     const styles = require('../../../assets/HeaderPanel.scss');
-    //require("../../../assets/ct_header_main_style.css");
-    const {headerItems, headerLogo} = this.props;
+
+    const {headerItems, headerLogo, useDefaultStyle } = this.props;
+    if (useDefaultStyle)
+      require("../../../assets/ct_header_main_style.css");
     return (
       <div className= {styles.headerPanel}>
         <Navbar >
@@ -102,5 +104,6 @@ export default class HeaderPanel extends Component {
 HeaderPanel.propTypes = {
   user: PropTypes.object,
   headerLogo: PropTypes.object,
-  headerItems: PropTypes.array.isRequired
+  headerItems: PropTypes.array.isRequired,
+  useDefaultStyle: PropTypes.number
 };
