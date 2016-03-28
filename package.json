@@ -1,6 +1,6 @@
 {
   "name": "universal_library",
-  "version": "0.13.00",
+  "version": "0.13.3",
   "description": "Universal Library Chotot",
   "keywords": [
     "universal_library"
@@ -38,7 +38,6 @@
   },
   "devDependencies": {
     "expect.js": "~0.3.1",
-    "jquery": "~1.11.3",
     "node-sass": "^3.4.2",
     "precommit-hook": "1.x",
     "rc-dialog": "~5.2.1",
@@ -55,7 +54,6 @@
     "lint"
   ],
   "dependencies": {
-    "velocity-animate": "~1.2.3",
     "webpack": "^1.12.14"
   }
 }
