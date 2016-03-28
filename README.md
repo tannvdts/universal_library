@@ -1,81 +1,19 @@
-# universal_library
----
+# Universal Library
 
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
-import {load as loadUserInfo} from 'redux/modules/headerPanel';
-//import { HeaderPanel, FooterPanel } from 'components';
-import {HeaderPanel, FooterPanel} from 'universal_library';
-import { routeActions } from 'react-router-redux';
-import { asyncConnect } from 'redux-async-connect';
-import config from '../../config';
+### Install
 
-@asyncConnect([{
-  promise: ({store: {dispatch, getState}}) => {
-    const promises = [];
+```sh
+$ npm install universal_library --save
+```
 
-    if (!isInfoLoaded(getState())) {
-      promises.push(dispatch(loadInfo()));
-    }
-    if (!isAuthLoaded(getState())) {
-      promises.push(dispatch(loadAuth()));
-    }
-
-    return Promise.all(promises);
-  }
-}])
-@connect(
-  state => ({user: state.auth.user, userInfo: state.headerPanel.userInfo, countX: state.headerPanel.countX}),
-  { pushState: routeActions.push, loadUserInfo})
-export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.object.isRequired,
-    user: PropTypes.object,
-    pushState: PropTypes.func.isRequired,
-    loadUserInfo: PropTypes.func,
-    userInfo: PropTypes.object,
-    countX: PropTypes.number
-  };
-
-  static contextTypes = {
-    store: PropTypes.object.isRequired
-  };
-
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
-      // login
-      this.props.pushState('/loginSuccess');
-    } else if (this.props.user && !nextProps.user) {
-      // logout
-      this.props.pushState('/');
-    }
-  }
-
-
-  handleLoadUserInfo=(event) => {
-    event.preventDefault();
-    this.props.loadUserInfo();
-  }
-
-  render() {
-    const styles = require('./App.scss');
-    var a=require("universal_library/assets/FooterPanel.css") ;
-    const headerLogo = {
-      largeLogo: {
-        styleClass: 'ct_logo_main_large',
-        altName: 'chotot-logo-large'
-      },
-      smallLogo: {
-        styleClass: 'ct_logo_main_small',
-        altName: 'chotot-logo-small'
-      },
-      url: 'https://www.chotot.vn/index.htm'
-    };
-
-    const headerItems = [
+### HeaderPanel Component
+```sh
+<HeaderPanel headerItems={headerItems} headerLogo={headerLogo} useDefaultStyle="1"/>
+```
+**Props**
+- headerItems:
+```sh
+const headerItems = [
       {
         type: 'linkRoute',
         detail: {
@@ -164,8 +102,48 @@ export default class App extends Component {
         }
       }
     ];
+```
+Type:
+    linkRoute: link of react router
+    linkDirect: url redirect
+    linkAction: call react action
+    dropdown: dropdown list
 
-    const footerItems = {
+details:
+    itemStyle: style of each item
+    iconStyle: icon of item
+    descStyle: style of description
+    desc: description content
+    url: url (route or direct link)
+    action: function wrap action function
+    list: dropdown item
+
+- headerLogo: style and logo image
+```sh
+    const headerLogo = {
+      largeLogo: {
+        styleClass: 'ct_logo_main_large',
+        altName: 'chotot-logo-large'
+      },
+      smallLogo: {
+        styleClass: 'ct_logo_main_small',
+        altName: 'chotot-logo-small'
+      },
+      url: 'https://www.chotot.vn/index.htm'
+    };
+```
+
+- useDefaultStyle : use default for HeaderPanel style, if you dont want to custom style.
+
+### FooterPanel Component
+```sh
+<FooterPanel footerItems={footerItems}/>
+```
+
+**Props**
+- footerItems
+```sh
+const footerItems = {
       nav: [
         {
           type: 'linkDirect',
@@ -196,39 +174,130 @@ export default class App extends Component {
       ]
 
     };
+```
 
-    const user = {
-      id: '123456',
-      name: 'tannguyen',
-      avatar: ''
-    };
-    const {userInfo, countX} = this.props;
 
-    return (
-      <div className={styles.app}>
-        <Helmet {...config.app.head}/>
-        <HeaderPanel headerItems={headerItems} user={user} headerLogo={headerLogo}/>
-
-        <div className="container">
-          <div className="page-header">
-            <h1>Chợ Tốt</h1>
-          </div>
-          {userInfo &&
-            <div>
-              <p>Name: {userInfo.name}</p>
-              <p>Address: {userInfo.address}</p>
-              <p>Count: {countX}</p>
-            </div>
-          }
-          <p className="lead">React + Redux + Universal JS</p>
-          <p className="lead">React + Redux + Universal JS</p>
-          <p className="lead">React + Redux + Universal JS</p>
-          <p className="lead">React + Redux + Universal JS</p>
-
-        </div>
-
-        <FooterPanel  footerItems={footerItems}/>
-      </div>
-    );
-  }
+### Custom style
+1. Make file scss in universal-js/src/themse/[file].scss . example: ct_header_main_style.scss
+```sh
+/* Header Panel global style
+-------------------------------------------------- */
+.ct_searchIcon {
+  width: 26px;
+  height: 26px;
+  background: url(#{$ct_static_path}/black_search_icon.png);
+  background-size: 26px 26px;
+  display: inline-block;
+  vertical-align: middle;
 }
+.ct_chatIcon {
+  width: 26px;
+  height: 26px;
+  background: url(#{$ct_static_path}/black_chat_icon.png);
+  background-size: 26px 26px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ct_loggedIcon {
+  position: absolute;
+  background: #eee;
+  height: 32px;
+  width: 32px;
+  top: 9px;
+  left: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: url(#{$ct_static_path}/member-profile-avatar_140x140.png);
+  background-size: 32px 32px;
+}
+
+.ct_loggedIcon_dropdown {
+  display: inline-block;
+  vertical-align: middle;
+  background: #eee;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background: url(#{$ct_static_path}/member-profile-avatar_140x140.png);
+  background-size: 32px 32px;
+}
+
+.ct_profileName {
+  display: block;
+  padding-left: 27px;
+}
+
+
+
+.ct_nav_dropdown_item_icon {
+  margin-right: 10px;
+  margin-left: -10px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ct_nav_dropdown_item_icon.sprite_sunny_common_tatca_new {
+  background: url(#{$ct_static_path}/sunny_common.png) no-repeat -807px -24px;
+}
+
+.ct_nav_dropdown_item_icon.sprite_sunny_common_info_new {
+  background: url(#{$ct_static_path}/sunny_common.png) no-repeat -759px -24px;
+}
+
+.ct_nav_dropdown_item_icon.sprite_sunny_common_transaction_history {
+  background: url(#{$ct_static_path}/sunny_common.png) no-repeat -805px -2px;
+}
+
+.ct_nav_dropdown_item_icon.sprite_sunny_common_logout_new {
+  background: url(#{$ct_static_path}/sunny_common.png) no-repeat -781px -2px;
+}
+
+/* Header Panel global style --end
+-------------------------------------------------- */
+
+/* Logo style --end
+-------------------------------------------------- */
+.ct_logo_main_large {
+  background: url(#{$ct_static_path}/logo.png) no-repeat;// background span tag
+  background-size: auto 50px; //size background of span tag, auto: width of background is auto, 50px: height of  background is 50px
+  width: 195px; // width size of span tag
+  height:50px;
+}
+.ct_logo_main_small {
+  background: url(#{$ct_static_path}/logo.png) no-repeat;
+  background-size: 142px 36px;
+  height: 36px;
+  width: 142px;
+  margin-top: 5px;
+}
+
+/* Logo style --end
+-------------------------------------------------- */
+```
+2. Import scss file into file: univsersal-js/src/themse/bootstrap.overides.scss
+```sh
+...
+...
+.reportDropDown.dropdown-toggle:active  {
+  background:#FFF !important; color:#000 !important;
+  box-shadow: inset 0 0px 0px #fff;
+  border: none;
+}
+
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: inset 0 0px 0px #fff;
+}
+
+
+@import 'photoswipe/photoswipe.scss';
+@import 'photoswipe/default-skin.scss';
+@import 'ct_layout/ct_header_main_style.scss'; //IMPORT SCSS FILE
+```
+
+
+
+
